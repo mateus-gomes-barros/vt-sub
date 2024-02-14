@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Boas Vindas!!</title>
+</head>
+  <body>
+    
+  
+      <div class="video-wrapper" style="margin: auto; width:auto;">
+<div style="width: min(50rem, 100%); margin: auto;">
+		<div class="container-border">
+			<div class="container-border">
+				<div id="headline-container">
+					<div class="mobile-headline">
+						<img src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0" style="width: 70vh;" alt="mobile">
+					</div>
+					<div class="desktop-headline">
+						<img src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"  alt="desktop">
+					</div>
+				</div>
+				<div id="video-container" style="position: relative;"></div>
+			</div>
+			
+			<style>
+				.smartplayer-headline{
+			display: none!important;
+		}
+		.smartplayer-icon, .smartplayer-play-icon{
+			display: none!important;
+		}
+		.w-vulcan-v2-button .click-for-sound-btn{
+			display: none!important;
+		}
+.w-css-reset .w-css-reset-tree{
+	display: none!important;
+}
+.w-bottom-bar .w-css-reset{
+	display: none!important;
+}
+				.container-border {
+					border: 1px solid rgba(0, 0, 0, 0);
+				}
+			
+				.mobile-headline {
+					display: none;
+				}
+			
+				.desktop-headline {
+					display: none;
+				}
+			
+				@media (max-width: 767px) {
+					.desktop-headline {
+						display: none;
+					}
+					.mobile-headline {
+						display: block;
+					}
+				}
+			
+				@media (min-width: 768px) {
+					.mobile-headline {
+						display: none;
+					}
+					.desktop-headline {
+						display: block;
+					}
+				}
+			
+				#headline-container {
+					text-align: center;
+				}
+			
+				#headline-container img {
+					max-width: 100%;
+					height: auto;
+					margin: 0 auto;
+				}
+			</style>
+			
+			<script type="text/javascript">
+				document.addEventListener("DOMContentLoaded", function() {
+					var videoIds = [
+						"ID_do_video_C", // Vídeo C
+						"65cc0feb44252100082cc183", // Vídeo A
+						"65cc100244252100082cc18c" // Vídeo B
+					];
+			
+					var totalVideos = videoIds.length;
+					var selectedVideoIndex; // Remover a inicialização aleatória aqui
+			
+					function loadNextVideo() {
+						selectedVideoIndex = Math.floor(Math.random() * totalVideos); // Seleciona um vídeo aleatório
+			
+						var selectedVideoId = videoIds[selectedVideoIndex];
+						var videoName;
+			
+						if (selectedVideoId === "ID_do_video_C") {
+							videoName = "Wistia";
+							// Selecione o container pelo ID
+var container = document.getElementById('video-container');
+
+// Crie os elementos de script
+var script1 = document.createElement('script');
+script1.src = "https://fast.wistia.com/embed/medias/a9753zif3b.jsonp";
+script1.async = true;
+
+var script2 = document.createElement('script');
+script2.src = "https://fast.wistia.com/assets/external/E-v1.js";
+script2.async = true;
+
+// Crie a div principal e adicione as classes necessárias
+var divWrapper = document.createElement('div');
+divWrapper.classList.add('wistia_responsive_padding');
+divWrapper.style.padding = '56.25% 0 0 0';
+divWrapper.style.position = 'relative';
+
+// Crie a div secundária e adicione as classes necessárias
+var divInnerWrapper = document.createElement('div');
+divInnerWrapper.classList.add('wistia_responsive_wrapper');
+divInnerWrapper.style.height = '100%';
+divInnerWrapper.style.left = '0';
+divInnerWrapper.style.position = 'absolute';
+divInnerWrapper.style.top = '0';
+divInnerWrapper.style.width = '100%';
+
+// Crie a div de incorporação e adicione as classes necessárias
+var divEmbed = document.createElement('div');
+divEmbed.classList.add('wistia_embed', 'wistia_async_a9753zif3b');
+divEmbed.setAttribute('data-videoFoam', 'true');
+divEmbed.style.height = '100%';
+divEmbed.style.position = 'relative';
+divEmbed.style.width = '100%';
+
+// Adicione os elementos à div principal
+divInnerWrapper.appendChild(divEmbed);
+divWrapper.appendChild(divInnerWrapper);
+
+// Adicione os scripts e a div principal ao container
+container.appendChild(script1);
+container.appendChild(script2);
+container.appendChild(divWrapper);
+							// Mostrar apenas a headline correspondente ao dispositivo
+							if (window.innerWidth < 768) {
+								document.querySelector(".mobile-headline").style.display = "block";
+								document.querySelector(".desktop-headline").style.display = "none";
+							} else {
+								document.querySelector(".mobile-headline").style.display = "none";
+								document.querySelector(".desktop-headline").style.display = "block";
+							}
+							// Adicionar margem superior ao vídeo container apenas para o vídeo C
+							container.style.marginTop = window.innerWidth < 768 ? "20px" : "20px";
+							// Adicionar parâmetros aos botões CTA para o vídeo C
+							var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=Wistia";
+							var buttonLinks = document.querySelectorAll(".button1");
+							buttonLinks.forEach((buttonLink) => {
+								if (!buttonLink.href.includes("VturbA") && !buttonLink.href.includes("VTurbB") && !buttonLink.href.includes("Wistia")) {
+									buttonLink.href += queryString;
+									console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
+								}
+							});
+						} else {
+							var embedDiv = document.createElement("div");
+							embedDiv.id = "vid_" + selectedVideoId;
+							embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
+							embedDiv.innerHTML = '<img id="thumb_' + selectedVideoId + '" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/' + selectedVideoId + '/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"><div id="backdrop_' + selectedVideoId + '" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>';
+			
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							script.id = "scr_" + selectedVideoId;
+							script.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
+							script.async = true;
+			
+							document.getElementById("video-container").appendChild(embedDiv);
+							document.getElementById("video-container").appendChild(script);
+			
+							// Esconder headlines para vídeos A e B
+							
+			
+							// Adicionar parâmetros aos botões CTA para todos os vídeos
+							var queryString = window.location.search.replace("utm_source=FB", "");
+							var param;
+							if (selectedVideoId === "65cc0feb44252100082cc183") { // Se o vídeo selecionado for o Vídeo A
+								param = "VTurbB"; // Alterado para VTurbB
+								videoName = "VTurbB"; // Alterado para VTurbB
+							} else if (selectedVideoId === "65cc100244252100082cc18c") { // Se o vídeo selecionado for o Vídeo B
+								param = "VTurbC"; // Alterado para VTurbC
+								videoName = "VTurbC"; // Alterado para VTurbC
+							} else { // Se for qualquer outro vídeo (Vídeo C)
+								param = "Wistia";
+							}
+							if (param) {
+								queryString += "&utm_source=" + param;
+								var buttonLinks = document.querySelectorAll(".button1");
+								buttonLinks.forEach((buttonLink) => {
+									if (!buttonLink.href.includes("VturbA") && !buttonLink.href.includes("VTurbB") && !buttonLink.href.includes("Wistia")) {
+										buttonLink.href += queryString;
+										console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
+									}
+								});
+							}
+						}
+			
+						console.log("Vídeo selecionado:", videoName);
+						console.log("Id do vídeo:", selectedVideoId);
+						currentVideoIndex = (currentVideoIndex + 1) % totalVideos; // Move para o próximo vídeo
+					}
+			
+					loadNextVideo(); // Carrega o primeiro vídeo ao carregar a página
+				});
+			</script>
+		</div>
+
+
+
+<style>
+	.button1 {
+		font-family: sans-serif;
+		background: #6ad414;
+		text-align:center;
+		border: none;
+		color: white;
+		text-decoration: none;
+		display: flex;
+		justify-content:center;
+	   
+		margin: auto;
+		align-items:center;
+		flex-direction:column;
+		padding: 15px;
+		max-width:390px;
+		border-radius: 29px;
+		position: relative;
+		font-weight: 700;
+	}
+	.botao{
+	margin-top: 50px;
+	}
+	.botao:hover label{
+	 opacity:1;
+	color:white;
+	}
+	.button1:hover {
+	  background-color: #1565C0;
+	  color: white;
+	}
+	</style>
+	
+	<div class="botao">
+	<a  class="button1"href="https://pay.kiwify.com.br/VqMyJZB?s2" title="Quero fazer 6 Dígitos sem Anúncios"  target="_blank" 
+	>
+		<label style="font-size: 20px;">Começar Teste de 30 Dias Agora</label>
+	   
+	</a>
+	</div>
+      </div>
+
+  
+</body>
+</html>
