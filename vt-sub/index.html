@@ -70,22 +70,23 @@
         document.addEventListener("DOMContentLoaded", function() {
             function getRandomPlayer() {
                 const players = [
-                    "65cc100244252100082cc18c" // VTurb Version C - With background
+                    "65cc0feb44252100082cc183", // VTurb Version B - Without background
                 ];
 
                 const player_id = players[Math.floor(Math.random() * players.length)];
-                return { player_id };
+                const isWistia = false;
+
+                return { player_id, isWistia };
             }
 
             function changeUTMSource(value = "") {
                 const links = document.querySelectorAll("a");
 
                 links.forEach((buttonLink) => {
-                    if (!buttonLink.search.includes("vturbC") && !buttonLink.search.includes("wistia")) {
+                    if (!buttonLink.search.includes("vturbB")) {
                         const buttonParams = new URLSearchParams(buttonLink.search);
 
                         buttonParams.set("teste_vturb", value);
-                        buttonParams.set("vturbC", value); // Incluindo o parâmetro para o vídeo C (VTurb Version C)
                         buttonLink.search = buttonParams.toString();
                     }
                 });
@@ -98,10 +99,10 @@
                 embedDiv.id = `vid_${player_id}`;
                 embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
                 embedDiv.innerHTML = `
-    <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
-    
-    <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
-  `;
+        <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+        
+        <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+      `;
 
                 const script = document.createElement("script");
                 script.type = "text/javascript";
@@ -112,21 +113,60 @@
                 container.appendChild(embedDiv);
                 container.appendChild(script);
 
-                changeUTMSource("vturbC");
+                const name = "vturbB";
+
+                changeUTMSource(name);
             }
 
-            function loadPlayer(player_id = "") {
+            function loadPlayer(player_id = "", isWistia = false) {
                 const container = document.getElementById("vt-custom-abtest-container");
 
                 return loadVTurbPlayer(container, player_id);
             }
 
-            const { player_id } = getRandomPlayer();
+            async function getVturbInstanceBy(player_id = "") {
+                return new Promise((resolve) => {
+                    const interval = setInterval(() => {
+                        if (!window.smartplayer || !window.smartplayer.instances || !window.smartplayer.instances.length) return;
 
-            loadPlayer(player_id);
+                        const player = window.smartplayer.instances.find((instance) => instance.options.id === player_id);
 
-            console.log(`Player ID: ${player_id}`);
+                        if (!player) return;
 
+                        clearInterval(interval);
+
+                        resolve(player);
+                    }, 100);
+                });
+            }
+
+            const toggleOverlay = (player_id = "", show = false) => {
+                const overlay = document.querySelector(".vt-custom-pause-overlay");
+
+                if (!overlay) return;
+
+                overlay.setAttribute("data-visible", show.toString());
+            }
+
+            async function vturbPauseOverlay(player_id = "") {
+                const player = await getVturbInstanceBy(player_id);
+                const overlay = document.querySelector(".vt-custom-pause-overlay");
+
+                player.on("pause", () => toggleOverlay(player_id, true));
+                player.on("play", () => toggleOverlay(player_id, false));
+
+                if (overlay) {
+                    overlay.addEventListener("click", () => player.play());
+                }
+            }
+
+            const { player_id, isWistia } = getRandomPlayer();
+
+            loadPlayer(player_id, isWistia);
+
+            console.log(`Player ID: ${player_id} - Is Wistia: ${isWistia}`);
+
+            vturbPauseOverlay(player_id);
         });
 
     </script>
@@ -174,14 +214,6 @@
             height: auto;
         }
 
-        .wistia_embed .click-for-sound-btn {
-            display: none !important;
-        }
-
-        .wistia_embed .w-vulcan-overlays-table.w-css-reset .w-vulcan-overlays--center {
-            display: none !important;
-        }
-
         #smartplayer .smartplayer-bezel,
         #smartplayer .smartplayer-icons {
             display: none !important;
@@ -201,7 +233,7 @@
             }
         }
     </style>
-</div>	
+</div>
 </div>
 
 
