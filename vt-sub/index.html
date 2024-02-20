@@ -42,106 +42,167 @@
   
       <div class="video-wrapper" style="margin: auto; width:auto;">
 <div style="width: min(50rem, 100%); margin: auto;">
-		<script src="https://fast.wistia.com/embed/medias/a9753zif3b.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_a9753zif3b seo=true videoFoam=true" style="height:100%;position:relative;width:100%">&nbsp;</div></div></div>
-</div>
+		<div class="bordavideo">
+    <div class="vt-headline-container">
+        <img
+            class="mobile-headline"
+            src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0"
+            alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+        >
 
-<script>
-	document.addEventListener("DOMContentLoaded", function() {
-    // Código para carregar o vídeo Wistia
-    var container = document.getElementById('video-container');
+        <img
+            class="desktop-headline"
+            src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"
+            alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+        >
+    </div>
 
-    var script1 = document.createElement('script');
-    script1.src = "https://fast.wistia.com/embed/medias/a9753zif3b.jsonp";
-    script1.async = true;
+    <div id="vt-custom-abtest-container">
+        <div class="vt-custom-pause-overlay" data-visible="false">
+            <img
+                src="https://cdn.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/2022/12/26/63a9aa4cd13d520009d39814.jpg"
+                alt="Clique para assistir"
+            >
+        </div>
+    </div>
 
-    var script2 = document.createElement('script');
-    script2.src = "https://fast.wistia.com/assets/external/E-v1.js";
-    script2.async = true;
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getRandomPlayer() {
+                const players = [
+                    "65cc100244252100082cc18c" // VTurb Version C - With background
+                ];
 
-    var divWrapper = document.createElement('div');
-    divWrapper.classList.add('wistia_responsive_padding');
-    divWrapper.style.padding = '56.25% 0 0 0';
-    divWrapper.style.position = 'relative';
-
-    var divInnerWrapper = document.createElement('div');
-    divInnerWrapper.classList.add('wistia_responsive_wrapper');
-    divInnerWrapper.style.height = '100%';
-    divInnerWrapper.style.left = '0';
-    divInnerWrapper.style.position = 'absolute';
-    divInnerWrapper.style.top = '0';
-    divInnerWrapper.style.width = '100%';
-
-    var divEmbed = document.createElement('div');
-    divEmbed.classList.add('wistia_embed', 'wistia_async_a9753zif3b');
-    divEmbed.setAttribute('data-videoFoam', 'true');
-    divEmbed.style.height = '100%';
-    divEmbed.style.position = 'relative';
-    divEmbed.style.width = '100%';
-
-    divInnerWrapper.appendChild(divEmbed);
-    divWrapper.appendChild(divInnerWrapper);
-
-    container.appendChild(script1);
-    container.appendChild(script2);
-    container.appendChild(divWrapper);
-
-    var videoIds = [
-        "ID_do_video_C", // Vídeo C
-        "65cc0feb44252100082cc183", // Vídeo A
-        "65cc100244252100082cc18c" // Vídeo B
-    ];
-
-    var totalVideos = videoIds.length;
-    var selectedVideoIndex; // Remover a inicialização aleatória aqui
-
-    function loadNextVideo() {
-        selectedVideoIndex = Math.floor(Math.random() * totalVideos); // Seleciona um vídeo aleatório
-
-        var selectedVideoId = videoIds[selectedVideoIndex];
-        var videoName;
-
-        if (selectedVideoId === "ID_do_video_C") {
-            videoName = "Wistia";
-            // Mostrar apenas a headline correspondente ao dispositivo
-            if (window.innerWidth < 768) {
-                document.querySelector(".mobile-headline").style.display = "block";
-                document.querySelector(".desktop-headline").style.display = "none";
-            } else {
-                document.querySelector(".mobile-headline").style.display = "none";
-                document.querySelector(".desktop-headline").style.display = "block";
+                const player_id = players[Math.floor(Math.random() * players.length)];
+                return { player_id };
             }
-            // Adicionar margem superior ao vídeo container apenas para o vídeo C
-            container.style.marginTop = window.innerWidth < 768 ? "20px" : "20px";
-            // Adicionar parâmetros aos botões CTA para o vídeo C
-            var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=Wistia";
-            var buttonLinks = document.querySelectorAll(".button1");
-            buttonLinks.forEach((buttonLink) => {
-                if (!buttonLink.href.includes("VturbA") && !buttonLink.href.includes("VTurbB") && !buttonLink.href.includes("Wistia")) {
-                    buttonLink.href += queryString;
-                    console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
-                }
-            });
-        } else {
-            var embedDiv = document.createElement("div");
-            embedDiv.id = "vid_" + selectedVideoId;
-            embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
-            embedDiv.innerHTML = '<img id="thumb_' + selectedVideoId + '" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/' + selectedVideoId + '/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"><div id="backdrop_' + selectedVideoId + '" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>';
 
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.id = "scr_" + selectedVideoId;
-            script.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
-            script.async = true;
+            function changeUTMSource(value = "") {
+                const links = document.querySelectorAll("a");
 
-            container.appendChild(embedDiv);
-            container.appendChild(script);
+                links.forEach((buttonLink) => {
+                    if (!buttonLink.search.includes("vturbC") && !buttonLink.search.includes("wistia")) {
+                        const buttonParams = new URLSearchParams(buttonLink.search);
+
+                        buttonParams.set("teste_vturb", value);
+                        buttonParams.set("vturbC", value); // Incluindo o parâmetro para o vídeo C (VTurb Version C)
+                        buttonLink.search = buttonParams.toString();
+                    }
+                });
+            }
+
+            function loadVTurbPlayer(container, player_id = "") {
+                if (!container || !player_id) return;
+
+                const embedDiv = document.createElement("div");
+                embedDiv.id = `vid_${player_id}`;
+                embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
+                embedDiv.innerHTML = `
+    <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+    
+    <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+  `;
+
+                const script = document.createElement("script");
+                script.type = "text/javascript";
+                script.id = `scr_${player_id}`;
+                script.src = `https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/player.js`;
+                script.async = true;
+
+                container.appendChild(embedDiv);
+                container.appendChild(script);
+
+                changeUTMSource("vturbC");
+            }
+
+            function loadPlayer(player_id = "") {
+                const container = document.getElementById("vt-custom-abtest-container");
+
+                return loadVTurbPlayer(container, player_id);
+            }
+
+            const { player_id } = getRandomPlayer();
+
+            loadPlayer(player_id);
+
+            console.log(`Player ID: ${player_id}`);
+
+        });
+
+    </script>
+
+    <style>
+        #vt-custom-abtest-container {
+            position: relative;
         }
-    }
 
-    loadNextVideo(); // Carrega o primeiro vídeo ao carregar a página
-});
+        #vt-custom-abtest-container > .vt-custom-pause-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-</script>
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+            z-index: 2;
+            user-select: none;
+        }
+
+        #vt-custom-abtest-container > .vt-custom-pause-overlay[data-visible="false"] {
+            display: none;
+        }
+
+        #vt-custom-abtest-container > .vt-custom-pause-overlay img {
+            width: 45%;
+            -webkit-user-drag: none;
+        }
+
+        .desktop-headline {
+            display: none;
+        }
+
+        .mobile-headline {
+            display: block;
+        }
+
+        .desktop-headline,
+        .mobile-headline {
+            width: 100%;
+            height: auto;
+        }
+
+        .wistia_embed .click-for-sound-btn {
+            display: none !important;
+        }
+
+        .wistia_embed .w-vulcan-overlays-table.w-css-reset .w-vulcan-overlays--center {
+            display: none !important;
+        }
+
+        #smartplayer .smartplayer-bezel,
+        #smartplayer .smartplayer-icons {
+            display: none !important;
+        }
+
+        #smartplayer .smartplayer-autoplay-img-element {
+            scale: 1 !important;
+        }
+
+        @media (min-width: 768px) {
+            .desktop-headline {
+                display: block;
+            }
+
+            .mobile-headline {
+                display: none;
+            }
+        }
+    </style>
+</div>
+</div>
 
 
 
